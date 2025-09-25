@@ -25,7 +25,14 @@ class UserController extends Controller
 
     public function show($id): JsonResponse
     {
-        return response()->json($this->service->find($id));
+        $user = $this->service->find($id);
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'User not found'
+            ], 404);
+        }
+        return response()->json($user);
     }
 
     public function store(UserStoreRequest $request): JsonResponse
@@ -56,6 +63,15 @@ class UserController extends Controller
 
     public function destroy($id): JsonResponse
     {
+        $user = $this->service->find($id);
+
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'User not found'
+            ], 404);
+        }
+
         $this->service->delete($id);
         return response()->json([
             'success' => true,

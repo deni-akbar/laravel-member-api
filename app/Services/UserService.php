@@ -58,6 +58,12 @@ class UserService
 
     public function delete($id)
     {
+        $user = $this->repo->find($id);
+
+        if (!$user) {
+            return null;
+        }
+
         return $this->repo->delete($id);
     }
 }
