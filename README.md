@@ -37,25 +37,31 @@ Ikuti langkah-langkah berikut untuk menjalankan project di local:
     ```bash
     php artisan key:generate
     ```
-5. **Jalankan migration dan seed db**
+5. **Publish config JWT & generate secret**
+
+    ```bash
+    php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+    php artisan jwt:secret
+    ```
+
+6. **Jalankan migration dan seed db**
 
     ```bash
     php artisan migrate --seed
     ```
-
-6. **Jalankan project**
+7. **Jalankan project**
 
     ```bash
     php artisan serve
     ```
 
-7. **Test Api Import Collection Postman**
+8. **Test Api Import Collection Postman**
 
     ```bash
     member-api.postman_collection.json
     ```
 
-7. **Route URL Akses UI**
+9. **Route URL Akses UI**
 
     ```bash
     http://localhost:8000/users
