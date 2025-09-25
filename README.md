@@ -48,3 +48,15 @@ Ikuti langkah-langkah berikut untuk menjalankan project di local:
     ```bash
     php artisan serve
     ```
+
+7. **Test Api Import Collection Postman**
+
+    ```bash
+    member-api.postman_collection.json
+    ```
+
+7. **Route URL Akses UI**
+
+    ```bash
+    http://localhost:8000/users
+    ```
