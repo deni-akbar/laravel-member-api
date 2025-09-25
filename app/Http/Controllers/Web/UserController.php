@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserWebStoreRequest;
-use App\Http\Requests\UserWebUpdateRequest;
+use App\Http\Requests\Web\UserStoreRequest;
+use App\Http\Requests\Web\UserUpdateRequest;
 use App\Services\Web\UserService;
 
 class UserController extends Controller
@@ -27,7 +27,7 @@ class UserController extends Controller
         return view('users.create');
     }
 
-    public function store(UserWebStoreRequest $request)
+    public function store(UserStoreRequest $request)
     {
         $this->service->create($request->validated());
         return redirect()->route('users.index')->with('success', 'User created successfully!');
@@ -39,7 +39,7 @@ class UserController extends Controller
         return view('users.edit', compact('user'));
     }
 
-    public function update(UserWebUpdateRequest $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
         $this->service->update($id, $request->validated());
         return redirect()->route('users.index')->with('success', 'User updated successfully!');
