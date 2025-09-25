@@ -20,7 +20,7 @@
             </tr>
         </thead>
         <tbody>
-            @forelse($users as $user)
+            @foreach($users as $user)
             <tr>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
@@ -39,11 +39,7 @@
                     </form>
                 </td>
             </tr>
-            @empty
-            <tr>
-                <td colspan="4" class="text-center">No users found.</td>
-            </tr>
-            @endforelse
+            @endforeach
         </tbody>
     </table>
 </div>
@@ -56,7 +52,10 @@
     $(document).ready(function() {
         $('#usersTable').DataTable({
             responsive: true,
-            autoWidth: false
+            autoWidth: false,
+            language: {
+                emptyTable: "No users found."
+            }
         });
     });
 </script>
